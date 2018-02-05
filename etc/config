@@ -10,7 +10,7 @@
 :colonels:
   # Accounts created with the following email addresses
   # are automatically considered admins of the system.
-  - CHANGEME@EXAMPLE.com
+  - deckobucko@gmail.com
 :emailer:
   :mode: :sendgrid
   :account: CHANGEME

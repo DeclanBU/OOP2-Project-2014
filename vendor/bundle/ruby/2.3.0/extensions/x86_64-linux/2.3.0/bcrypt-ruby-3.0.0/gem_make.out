@@ -1,0 +1,27 @@
+current directory: /home/ots/onetimesecret/vendor/bundle/ruby/2.3.0/gems/bcrypt-ruby-3.0.0/ext/mri
+/usr/share/rvm/rubies/ruby-2.3.6/bin/ruby -r ./siteconf20180201-25194-15ykkfg.rb extconf.rb
+creating Makefile
+
+current directory: /home/ots/onetimesecret/vendor/bundle/ruby/2.3.0/gems/bcrypt-ruby-3.0.0/ext/mri
+make "DESTDIR=" clean
+
+current directory: /home/ots/onetimesecret/vendor/bundle/ruby/2.3.0/gems/bcrypt-ruby-3.0.0/ext/mri
+make "DESTDIR="
+compiling wrapper.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling bcrypt_ext.c
+bcrypt_ext.c: In function ‘bcrypt_wrapper’:
+bcrypt_ext.c:27:5: warning: implicit declaration of function ‘ruby_bcrypt’ [-Wimplicit-function-declaration]
+     return (VALUE)ruby_bcrypt(args->output, args->key, args->salt);
+     ^
+bcrypt_ext.c: At top level:
+bcrypt_ext.c:25:14: warning: ‘bcrypt_wrapper’ defined but not used [-Wunused-function]
+ static VALUE bcrypt_wrapper(void *_args) {
+              ^
+compiling crypt.c
+linking shared-object bcrypt_ext.so
+
+current directory: /home/ots/onetimesecret/vendor/bundle/ruby/2.3.0/gems/bcrypt-ruby-3.0.0/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -m 0755 bcrypt_ext.so ./.gem.20180201-25194-1teg051
