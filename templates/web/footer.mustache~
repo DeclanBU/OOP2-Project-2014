@@ -13,17 +13,17 @@
     {{/display_feedback}}
     {{#display_links}}
     <p class="footerNav">
-      <!--<a href="{{baseotsuri}}/about">About                                          ---------------------- COMMENTED OUT BY DECLAN--></a>
-      <!--<a href="{{baseotsuri}}/translations">Help Translate                          ---------------------- COMMENTED OUT BY DECLAN--></a> 
-      <!--<a href="{{baseotsuri}}/docs/api">API                                         ---------------------- COMMENTED OUT BY DECLAN--></a> 
-      <!--<a href="https://github.com/onetimesecret/onetimesecret">Code	                ---------------------- COMMENTED OUT BY DECLAN--></a> 
+      <!--<a href="{{baseotsuri}}/about">About               COMMENTED OUT BY DECLAN--></a>
+      <!--<a href="{{baseotsuri}}/translations">Help Translate   COMMENTED OUT BY DECLAN--></a> 
+      <!--<a href="{{baseotsuri}}/docs/api">API                   COMMENTED OUT BY DECLAN--></a> 
+      <!--<a href="https://github.com/onetimesecret/onetimesecret">Code	       COMMENTED OUT BY DECLAN--></a> 
       <!--<a href="https://github.com/onetimesecret/onetimesecret/issues" title="Issue Tracker">Issues         COMMENTED OUT BY DECLAN--></a>
     </p>
     <p class="footerNav">
-       <!--<a href="{{baseotsuri}}/info/privacy">Privacy                                ---------------------- COMMENTED OUT BY DECLAN--></a>
-       <!--<a href="{{baseotsuri}}/info/terms">Terms &amp; Conditions			---------------------- COMMENTED OUT BY DECLAN--></a>
-       <!--<a href="{{baseotsuri}}/contributor">Contributors                            ---------------------- COMMENTED OUT BY DECLAN--></a>
-       <!--<a href="{{baseotsuri}}/info/security">Security                              ---------------------- COMMENTED OUT BY DECLAN--></a>
+       <!--<a href="{{baseotsuri}}/info/privacy">Privacy                       COMMENTED OUT BY DECLAN--></a>
+       <!--<a href="{{baseotsuri}}/info/terms">Terms &amp; Condition COMMENTED OUT BY DECLAN--></a>
+       <!--<a href="{{baseotsuri}}/contributor">Contributors                     COMMENTED OUT BY DECLAN--></a>
+       <!--<a href="{{baseotsuri}}/info/security">Security                   COMMENTED OUT BY DECLAN--></a>
     </p>
     {{/display_links}}
     {{#display_icons}}
@@ -39,7 +39,7 @@
 
   </div>
 
-</div> <!-- /container -->
+<!--</div> <!-- /container -->
 
 <!--<script src="/js/vendor/bootstrap.min.js"></script>
 
