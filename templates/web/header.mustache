@@ -82,7 +82,7 @@
       color: #111;
     }
     .SHARESECRET{
-		
+	margin-left:30px;	
     -webkit-font-smoothing: antialiased;
     background-color: #5872c9!important;
     background-repeat: repeat-x;
@@ -96,8 +96,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     font-family:Helvetica Neue",Helvetica,Arial,sans-serif;
-
-    
+  
 
 
 	}
@@ -115,7 +114,10 @@
 		
 		}
 
-	}
+	.input-block-level{
+		margin-left:40px;
+		
+		}
 
     /* Supporting marketing content */
     .marketing {
@@ -149,7 +151,7 @@
         padding: 0px;
       }
       .jumbotron {
-        margin: 0px 0;
+        marginoptions: 0px 0;
       }
       .jumbotron h1 {
         letter-spacing: -1px;
@@ -191,15 +193,38 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+.control-group{
+	margin-left:60px;
+	margin-right:40px;
+	}
+	
+	
+	
+	
+	
+	
 user agent stylesheet
 div {
     display: block;
 }
+.controls{
+    margin-left:30px;	
+	
+	}
 html, body {
     height: 100%;
     font-family: Verdana;
     /* font-size: 12px; */
 }
+well options-box{
+	
+	margin-left:10px;
+	padding-right:20px;	
+	}
+.textarea{
+	margin-left:20px;
+	
+	}
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
@@ -235,9 +260,16 @@ html {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     }
+    
+    .control-label lighter{
+		text-align:left;
+		padding:10px;
+		
+		}
+   
   </style>
   <script src="/js/vendor/cufon-yui.js" type="text/javascript"></script>
-  <script src="/js/vendor/officina.font.js" type="text/javascript"></script>
+  <scontrol-label lightercript src="/js/vendor/officina.font.js" type="text/javascript"></script>
   <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" >
   <link href="/css/alertify.css" rel="stylesheet">
   <link href="/css/main.css?{{ot_version_id}}" rel="stylesheet">
@@ -298,7 +330,6 @@ html {
 
 
 
-
 <!--create secret form mustache-->
 
 <form id="createSecret" method="post" autocomplete="off" class="form-horizontal">
@@ -306,7 +337,7 @@ html {
   <fieldset>
     <div class="text-input">
       <textarea rows="7" class="btn-block" name="secret" autocomplete="off" placeholder="{{i18n.COMMON.secret_placeholder}}"></textarea>
-      <div class="chars-display lightest"></div>
+
     </div>
 
     {{#display_options}}
@@ -318,17 +349,17 @@ html {
       
       <!--CHANGED BY DECLAN NEED TO BE SENDER AND RECIPEINT EMAILS-->
       
-      <div class="control-group">
+    <div class="control-group">
       
-		  <label class="control-label lighter" for="passphraseField">My Email:</label>
+		   <label class="control-label lighter" for="passphraseField">My Email:</label>
 		   
-			  <div class="controls">
+			   <div class="controls">
 				 <input class="input-block-level" type="text" name="passphrase"  />
 			  </div>
 			  
 		   <label class="control-label lighter" for="passphraseField">Recipient Email:</label>
 		   
-			  <div class="controls">
+			   <div class="controls">
 				 <input class="input-block-level" type="text" name="passphrase"  />
 			  </div> 
 		   
@@ -337,13 +368,14 @@ html {
 			  <div class="controls">
 			      <input id="secreturi" class="input-block-level" value="{{share_uri}}" readonly="readonly" />
 			  </div>
+			   
 			   <div class = "mail">
-			  <button type="button">Send Email!</button>
-			 </div>
-  </div>		
+			       <button type="button">Send Email!</button>
+			  </div>
+    </div>		
 
     
-      
+     
     
     
    
@@ -354,16 +386,16 @@ html {
       
       
       {{#display_recipients}}
-      <div class="control-group">
+ <div class="control-group">
         <label class="control-label lighter" for="recipientField">{{i18n.COMMON.secret_recipient_address}}:</label>
-        <div class="controls">
-          <input class="input-block-level" type="text" name="recipient[]" id="recipientField" value="" placeholder="example@onetimesecret.com" autocomplete="off" />
-        </div>
+					<div class="controls">
+					  <input class="input-block-level" type="text" name="recipient[]" id="recipientField" value="" placeholder="example@onetimesecret.com" autocomplete="off" />
+					</div>
       </div>
       {{/display_recipients}}
       <div class="control-group">
         <label class="control-label lighter" for="recipientField">Lifetime:</label>
-        <div class="controls">
+        <div class="controls">control-label lighter
           <select name="ttl" class="span3">
             {{#expiration_options}}
             <option value="{{value}}" {{#default}}selected{{/default}}>{{name}}</option>
