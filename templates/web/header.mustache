@@ -23,6 +23,7 @@
       padding-top: 0px;
       padding-bottom: 10px;
       font-family: georgia,serif;
+      
     }
 
     /* Custom container */
@@ -55,6 +56,10 @@
       margin-bottom: 6px;
       color: #999;
     }
+    hr{
+		border-top:0px solid #eee;
+		border:none;
+		}
     
      /* changed by declan */
     .jumbotron .lead {
@@ -91,11 +96,27 @@
     margin-top: 10px;
     margin-bottom: 10px;
     font-family:Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    
+
+
 	}
 	.share-a-secret{
      font-size: 25px;	
      font-family:Helvetica Neue",Helvetica,Arial,sans-serif;	
+
+    
 	}
+	.mail{
+		padding-top:10px;
+		text-align: center;
+		
+		
+		
+		}
+
+	}
+
     /* Supporting marketing content */
     .marketing {
       margin: 20px 0;
@@ -246,11 +267,12 @@ html {
 
   <div class="masthead">
     <div class="nav pull-right">
+		
     {{#display_masthead}}
 
       {{^authenticated}}
         {{#is_subdomain}}
-        <a href="{{baseotsuri}}/" title="Go to One-Time Secret">Go to onetimesecret.com</a>
+      
         {{/is_subdomain}}
         {{^is_subdomain}}
         <!--<a href="{{baseotsuri}}/signup" title="Signup - Individual and Business plans" class="active">{{i18n.COMMON.header_create_account}}</a> |   COMMENTED OUT BY DECLAN-->
@@ -258,11 +280,10 @@ html {
         <!--<a href="{{baseotsuri}}/login" title="Log in to One-Time Secret">{{i18n.COMMON.header_sign_in}}</a>  COMMENTED OUT BY DECLAN-->
         {{/is_subdomain}}
       {{/authenticated}}
-
+      
       {{#authenticated}}
         <a href="/" class="home">{{cust.custid}}</a> {{#colonel}}<a href="{{baseotsuri}}/colonel/" title="" class="nounderline">*</a>{{/colonel}} |
-        <a href="{{baseotsuri}}/account" title="Your Account">{{i18n.COMMON.header_dashboard}}</a> |
-        <a href="{{baseotsuri}}/logout" title="Log out of One-Time Secret">{{i18n.COMMON.header_logout}}</a>
+       
       {{/authenticated}}
 
       {{^is_default_locale}}
@@ -270,7 +291,121 @@ html {
       {{/is_default_locale}}
 
     {{/display_masthead}}
-
-    </div>
    
-  </div>
+
+
+
+
+
+
+
+<!--create secret form mustache-->
+
+<form id="createSecret" method="post" autocomplete="off" class="form-horizontal">
+  {{{add_shrimp}}}
+  <fieldset>
+    <div class="text-input">
+      <textarea rows="7" class="btn-block" name="secret" autocomplete="off" placeholder="{{i18n.COMMON.secret_placeholder}}"></textarea>
+      <div class="chars-display lightest"></div>
+    </div>
+
+    {{#display_options}}
+    <div class="well options-box">
+      <div class="title">{{i18n.COMMON.secret_privacy_options}}</div>
+      
+      
+      
+      
+      <!--CHANGED BY DECLAN NEED TO BE SENDER AND RECIPEINT EMAILS-->
+      
+      <div class="control-group">
+      
+		  <label class="control-label lighter" for="passphraseField">My Email:</label>
+		   
+			  <div class="controls">
+				 <input class="input-block-level" type="text" name="passphrase"  />
+			  </div>
+			  
+		   <label class="control-label lighter" for="passphraseField">Recipient Email:</label>
+		   
+			  <div class="controls">
+				 <input class="input-block-level" type="text" name="passphrase"  />
+			  </div> 
+		   
+		   <label class="control-label lighter" for="passphraseField">Shared Secret Link:</label>
+			
+			  <div class="controls">
+			      <input id="secreturi" class="input-block-level" value="{{share_uri}}" readonly="readonly" />
+			  </div>
+			   <div class = "mail">
+			  <button type="button">Send Email!</button>
+			 </div>
+  </div>		
+
+    
+      
+    
+    
+   
+ 
+      
+      
+      
+      
+      
+      {{#display_recipients}}
+      <div class="control-group">
+        <label class="control-label lighter" for="recipientField">{{i18n.COMMON.secret_recipient_address}}:</label>
+        <div class="controls">
+          <input class="input-block-level" type="text" name="recipient[]" id="recipientField" value="" placeholder="example@onetimesecret.com" autocomplete="off" />
+        </div>
+      </div>
+      {{/display_recipients}}
+      <div class="control-group">
+        <label class="control-label lighter" for="recipientField">Lifetime:</label>
+        <div class="controls">
+          <select name="ttl" class="span3">
+            {{#expiration_options}}
+            <option value="{{value}}" {{#default}}selected{{/default}}>{{name}}</option>
+            {{/expiration_options}}
+          </select>
+        </div>
+      </div>
+    </div>
+    </div>
+    {{/display_options}}
+    <button class="create btn btn-large btn-block btn-custom cufon" type="submit" name="kind" value="share" >{{i18n.COMMON.button_create_secret}}{{^authenticated}}*{{/authenticated}}</button>
+  </fieldset>
+</form>
+<script type="text/javascript">
+$('#createSecret textarea').on('keyup', function () {
+  var max = {{plan.options.size}};
+  var len = $(this).val().length;
+  var obj = $('#createSecret .chars-display');
+  if (len > max && obj.hasClass('lightest')) {
+    obj.removeClass('lightest');
+    obj.addClass('warning-text');
+  } else if (len <= max && obj.hasClass('warning-text')) {
+    obj.removeClass('warning-text');
+    obj.addClass('lightest');
+  }
+  var char = max - len;
+  obj.text(char);
+  var sub = $('#createSecret .generate');
+  if (len > 0 && !sub.attr('disabled')) {
+    sub.attr('disabled', true);
+  }
+  if (len == 0) {
+    sub.attr('disabled', false);
+  }
+});
+</script>
+
+ </div> 
+
+     
+
+
+   
+  
+
