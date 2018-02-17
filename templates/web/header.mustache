@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -48,7 +49,7 @@
       color: #983;
       font-size: 0px;
     }
-    .jumbotron h1 {
+     .jumbotron h1 {
       font-size: 0px;
       font-weight: normal;
       line-height: 1;
@@ -96,7 +97,7 @@
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-family:Helvetica Neue",Helvetica,Arial,sans-serif;
+     font-family:Helvetica Neue",Helvetica,Arial,sans-serif;
    
 
 
@@ -140,8 +141,7 @@
     /* Landscape phones and down */
     @media (max-width: 480px) {
       body {
-
-      }
+        }
       #logo {
         background-image: url('/img/logo-36.png');
         display: inline-block;
@@ -219,7 +219,6 @@ html, body {
     /* font-size: 12px; */
 }
 well options-box{
-	
 	margin-left:10px;
 	padding-right:20px;	
 	}
@@ -262,7 +261,6 @@ html {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     }
-    
     .control-label lighter{
 		text-align:left;
 		padding:10px;
@@ -303,8 +301,7 @@ html {
     <div class="nav pull-right">
 		
     {{#display_masthead}}
-
-      {{^authenticated}}
+ {{^authenticated}}
         {{#is_subdomain}}
       
         {{/is_subdomain}}
@@ -341,8 +338,7 @@ html {
       <textarea rows="7" class="btn-block" name="secret" autocomplete="off" placeholder="{{i18n.COMMON.secret_placeholder}}"></textarea>
 
     </div>
-
-    {{#display_options}}
+ {{#display_options}}
     <div class="well options-box">
       <div class="title">{{i18n.COMMON.secret_privacy_options}}</div>
       
@@ -375,19 +371,7 @@ html {
 			       <button type="button">Send Email!</button>
 			  </div>
     </div>		
-
-    
-     
-    
-    
-   
- 
-      
-      
-      
-      
-      
-      {{#display_recipients}}
+       {{#display_recipients}}
  <div class="control-group">
         <label class="control-label lighter" for="recipientField">{{i18n.COMMON.secret_recipient_address}}:</label>
 					<div class="controls">
@@ -397,7 +381,7 @@ html {
       {{/display_recipients}}
       <div class="control-group">
         <label class="control-label lighter" for="recipientField">Lifetime:</label>
-        <div class="controls">control-label lighter
+        <div class="controls">
           <select name="ttl" class="span3">
             {{#expiration_options}}
             <option value="{{value}}" {{#default}}selected{{/default}}>{{name}}</option>
@@ -434,12 +418,99 @@ $('#createSecret textarea').on('keyup', function () {
   }
 });
 </script>
-
  </div> 
+ 
+ 
+ 
+ 
+ 
+<?php
 
+								
+	$myMail = $_post['myMail'];
+	$mail = $_post['mail'];  #recipient mail
+	$msg = $_post['msg'];
+	
+	use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    require 'vendor/autoload.php';
+
+	
+	$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'deckobucko@gmail.com';             // SMTP username
+    $mail->Password = 'secret';                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+
+      //Sender
+    $mail->setFrom('deckobucko@gmail.com', 'Mailer');
      
-
-
+     //Recipients
+    $mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
    
-  
+    $mail->addReplyTo('info@example.com', 'Information');
+    //$mail->addCC('cc@example.com');
+    //$mail->addBCC('bcc@example.com');
 
+    //Attachments
+    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+					
+								
+								
+								
+								
+								
+								
+								
+								#if(isset($_POST["SubmitBtn"])){
+
+								#$to = "someone@example.com";
+								#$subject = "Contact mail";
+								#$from=$_POST["email"];
+								#$msg=$_POST["msg"];
+								#$headers = "From: $from";
+			                    #mail($to,$subject,$msg,$headers);
+								#echo "Email successfully sent.";
+}
+?>
+
+<form  method="post" action="" >
+<table width="100%" border="0" align="center" cellpadding="4" cellspacing="1">
+<tr>
+  <td colspan="2"><strong>Online Contact Form</strong></td>
+</tr>
+<tr>
+  <td>E-mail :</td>
+  <td><input name="email" type="text" id="email"></td>
+</tr>
+<tr>
+  <td>Message :</td>
+  <td>
+  <textarea name="msg" cols="45" rows="5" id="msg"></textarea>
+  </td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td><input type="submit" value="Submit"></td>
+</tr>
+</table>
+</form>
